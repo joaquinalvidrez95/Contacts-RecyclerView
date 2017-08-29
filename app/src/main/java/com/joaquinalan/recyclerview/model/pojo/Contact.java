@@ -1,4 +1,4 @@
-package com.joaquinalan.recyclerview.pojo;
+package com.joaquinalan.recyclerview.model.pojo;
 
 /**
  * Created by joaquinalan on 25/01/2017.
@@ -12,12 +12,11 @@ public class Contact {
     private int mImage;
     private int mNumberOfLikes;
 
-    public Contact(String name, String phone, String email, int image, int numberOfLikes) {
+    public Contact(String name, String phone, String email, int image) {
         this.mName = name;
         this.mPhone = phone;
         mEmail = email;
         mImage = image;
-        setNumberOfLikes(numberOfLikes);
     }
 
     public Contact() {

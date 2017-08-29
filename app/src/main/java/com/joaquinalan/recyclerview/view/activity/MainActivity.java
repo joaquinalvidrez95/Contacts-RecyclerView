@@ -1,4 +1,4 @@
-package com.joaquinalan.recyclerview.activities;
+package com.joaquinalan.recyclerview.view.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -8,9 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.joaquinalan.recyclerview.R;
-import com.joaquinalan.recyclerview.adapters.PageAdapter;
-import com.joaquinalan.recyclerview.fragments.ProfileFragment;
-import com.joaquinalan.recyclerview.fragments.RecyclerViewFragment;
+import com.joaquinalan.recyclerview.view.adapter.PageAdapter;
+import com.joaquinalan.recyclerview.view.fragment.ContactDisplayerFragment;
+import com.joaquinalan.recyclerview.view.fragment.ProfileFragment;
 
 import java.util.ArrayList;
 
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Fragment> addFragments() {
         ArrayList<Fragment> fragmentArrayList = new ArrayList<>();
 
-        fragmentArrayList.add(new RecyclerViewFragment());
+        fragmentArrayList.add(new ContactDisplayerFragment());
         fragmentArrayList.add(new ProfileFragment());
         return fragmentArrayList;
     }

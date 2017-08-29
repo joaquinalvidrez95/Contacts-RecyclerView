@@ -1,4 +1,4 @@
-package com.joaquinalan.recyclerview.adapters;
+package com.joaquinalan.recyclerview.view.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

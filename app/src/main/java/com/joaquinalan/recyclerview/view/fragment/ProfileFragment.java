@@ -1,4 +1,4 @@
-package com.joaquinalan.recyclerview.fragments;
+package com.joaquinalan.recyclerview.view.fragment;
 
 
 import android.os.Bundle;

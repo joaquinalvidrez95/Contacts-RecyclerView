@@ -11,7 +11,7 @@
 
     <string name="contactcardview_name">Nombre</string>
     <string name="contactcardview_phone">Teléfono</string>
-    <string name="contactcardview_thumbupmessage">"You like "</string>
+    <string name="contactcardview_thumbupmessage">"You liked "</string>
     <string name="contactcardview_numberoflikes">10</string>
     <string name="contactcardview_likelabel">Likes</string>
 

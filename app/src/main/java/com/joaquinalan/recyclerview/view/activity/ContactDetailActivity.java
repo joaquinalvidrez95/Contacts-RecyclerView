@@ -1,4 +1,4 @@
-package com.joaquinalan.recyclerview.activities;
+package com.joaquinalan.recyclerview.view.activity;
 
 import android.Manifest;
 import android.content.Intent;
