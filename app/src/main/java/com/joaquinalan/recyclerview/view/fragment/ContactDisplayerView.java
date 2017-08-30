@@ -1,7 +1,6 @@
 package com.joaquinalan.recyclerview.view.fragment;
 
 import com.joaquinalan.recyclerview.model.pojo.Contact;
-import com.joaquinalan.recyclerview.view.adapter.ContactAdapter;
 
 /**
  * Created by joaquinalan on 04/02/2017.
@@ -19,4 +18,6 @@ public interface ContactDisplayerView {
     void showContactLiked(Contact contact);
 
     void setContacts(Iterable<Contact> contacts);
+
+    void onNumberOfLikesChanged(Contact contact);
 }

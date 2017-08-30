@@ -13,6 +13,7 @@ import com.joaquinalan.recyclerview.model.pojo.Contact;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Created by joaquinalan on 26/01/2017.
@@ -22,9 +23,8 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
     private List<Contact> mContacts = new ArrayList<>();
     private ContactAdapterListener mContactAdapterListener;
 
-
     public ContactAdapter(Iterable<Contact> contacts, ContactAdapterListener contactAdapterListener) {
-        for (Contact contact : contacts) {
+        for (final Contact contact : contacts) {
             mContacts.add(contact);
         }
 
@@ -58,8 +58,27 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
     public void updateContacts(Iterable<Contact> contacts) {
         mContacts.clear();
 
-        for (Contact contact : contacts) {
+        for (final Contact contact : contacts) {
             mContacts.add(contact);
+        }
+        notifyDataSetChanged();
+    }
+
+    public void setContact(Contact newContact) {
+//        for (final Contact contact : mContacts) {
+//            if (contact.getId() == newContact.getId()) {
+//                contact.setNumberOfLikes(newContact.getNumberOfLikes());
+//            }
+//        }
+
+        ListIterator<Contact> listIterator = mContacts.listIterator();
+        while (listIterator.hasNext()) {
+            // Need to call next, before set.
+
+            if (listIterator.next().getId() == newContact.getId()) {
+                // Replace item returned from next()
+                listIterator.set(newContact);
+            }
         }
         notifyDataSetChanged();
     }
@@ -79,11 +98,16 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
 
         public ContactViewHolder(View itemView) {
             super(itemView);
-            mImageViewImage = (ImageView) itemView.findViewById(R.id.imageview_contactcardview_image);
-            mTextViewName = (TextView) itemView.findViewById(R.id.textview_contactcardview_name);
-            mTextViewPhone = (TextView) itemView.findViewById(R.id.textview_contactcardview_phone);
-            mTextViewNumberOfLikes = (TextView) itemView.findViewById(R.id.textview_contactcardview_numberoflikes);
-            mButtonThumbUp = (ImageButton) itemView.findViewById(R.id.button_contactcardview_thumbup);
+            mImageViewImage = (ImageView) itemView.findViewById(R.id
+                    .imageview_contactcardview_image);
+            mTextViewName = (TextView) itemView.findViewById(R.id
+                    .textview_contactcardview_name);
+            mTextViewPhone = (TextView) itemView.findViewById(R.id
+                    .textview_contactcardview_phone);
+            mTextViewNumberOfLikes = (TextView) itemView.findViewById(R.id
+                    .textview_contactcardview_numberoflikes);
+            mButtonThumbUp = (ImageButton) itemView.findViewById(R.id
+                    .button_contactcardview_thumbup);
 
             mImageViewImage.setOnClickListener(this);
             mButtonThumbUp.setOnClickListener(this);

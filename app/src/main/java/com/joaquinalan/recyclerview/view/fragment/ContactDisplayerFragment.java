@@ -2,8 +2,6 @@ package com.joaquinalan.recyclerview.view.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,10 +14,9 @@ import android.widget.Toast;
 
 import com.joaquinalan.recyclerview.R;
 import com.joaquinalan.recyclerview.model.ContactsDisplayer;
-import com.joaquinalan.recyclerview.model.ContactsDisplayerModel;
-import com.joaquinalan.recyclerview.model.data.ContactsDatabase;
-import com.joaquinalan.recyclerview.model.data.ContactsDatabaseInterface;
+import com.joaquinalan.recyclerview.model.ContactsDisplayerPresentable;
 import com.joaquinalan.recyclerview.model.data.ContactsDbHelper;
+import com.joaquinalan.recyclerview.model.data.ContactsPersistence;
 import com.joaquinalan.recyclerview.model.pojo.Contact;
 import com.joaquinalan.recyclerview.presenter.ContactDisplayerFragmentListener;
 import com.joaquinalan.recyclerview.presenter.ContactDisplayerFragmentPresenter;
@@ -49,12 +46,10 @@ public class ContactDisplayerFragment extends Fragment implements ContactDisplay
     }
 
     private void setupMVP() {
-        SQLiteOpenHelper db = new ContactsDbHelper(getContext());
-        ContactsDisplayerModel contactsDisplayerModel;
-        SQLiteDatabase sqLiteDatabase = db.getWritableDatabase();
-        ContactsDatabaseInterface contactsDatabase = new ContactsDatabase(sqLiteDatabase);
-        contactsDisplayerModel = new ContactsDisplayer(contactsDatabase);
-        mPresenter = new ContactDisplayerFragmentPresenter(this, contactsDisplayerModel);
+        ContactsPersistence db = new ContactsDbHelper(getContext());
+        ContactsDisplayerPresentable contactsDisplayerPresentable;
+        contactsDisplayerPresentable = new ContactsDisplayer(db);
+        mPresenter = new ContactDisplayerFragmentPresenter(this, contactsDisplayerPresentable);
     }
 
     @Override
@@ -106,6 +101,11 @@ public class ContactDisplayerFragment extends Fragment implements ContactDisplay
     @Override
     public void setContacts(Iterable<Contact> contacts) {
         mContactAdapter.updateContacts(contacts);
+    }
+
+    @Override
+    public void onNumberOfLikesChanged(Contact contact) {
+        mContactAdapter.setContact(contact);
     }
 
     @Override

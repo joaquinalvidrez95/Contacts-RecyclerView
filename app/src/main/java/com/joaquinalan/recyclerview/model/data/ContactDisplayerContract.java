@@ -7,7 +7,7 @@ import android.provider.BaseColumns;
  */
 
 class ContactDisplayerContract {
-    static final class ContactsEntry implements BaseColumns {
+    static final class ContactTable implements BaseColumns {
         static final String TABLE_NAME = "contact";
 
         //public static final String TABLE_CONTACTS = "contact";
@@ -17,7 +17,7 @@ class ContactDisplayerContract {
         static final String COLUMN_IMAGE = "image";
     }
 
-    static final class LikesEntry implements BaseColumns {
+    static final class LikeTable implements BaseColumns {
         static final String TABLE_NAME = "like";
 
         //public static final String TABLE_CONTACT_LIKES = "contactLikes";

@@ -1,7 +1,5 @@
 package com.joaquinalan.recyclerview.model.data;
 
-import android.content.Context;
-
 import com.joaquinalan.recyclerview.R;
 import com.joaquinalan.recyclerview.model.pojo.Contact;
 
@@ -35,6 +33,12 @@ class ContactConstructor {
                 , "111111"
                 , "peña_nieto@hotmail.com"
                 , R.drawable.florence_and_the_machine_logo
+        ));
+
+        contacts.add(new Contact("Juaco"
+                , "+521818"
+                , "joaquinalvidrez95@gmail.com"
+                , R.drawable.led_zeppelin_logo
         ));
 
         contacts.add(new Contact("Donald Trump"

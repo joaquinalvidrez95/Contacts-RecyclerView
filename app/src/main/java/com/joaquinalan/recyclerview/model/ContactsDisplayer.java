@@ -1,31 +1,32 @@
 package com.joaquinalan.recyclerview.model;
 
-import com.joaquinalan.recyclerview.model.data.ContactsDatabaseInterface;
+import com.joaquinalan.recyclerview.model.data.ContactsPersistence;
 import com.joaquinalan.recyclerview.model.pojo.Contact;
 
 /**
  * Created by joaquinalan on 28/08/2017.
  */
 
-public class ContactsDisplayer implements ContactsDisplayerModel {
-    private ContactsDatabaseInterface mContactsDatabaseInterface;
+public class ContactsDisplayer implements ContactsDisplayerPresentable {
+    private ContactsPersistence mContactsPersistence;
 
-    public ContactsDisplayer(ContactsDatabaseInterface contactsDatabaseInterface) {
-        mContactsDatabaseInterface = contactsDatabaseInterface;
+    public ContactsDisplayer(ContactsPersistence contactsDatabaseInterface) {
+        mContactsPersistence = contactsDatabaseInterface;
     }
 
     @Override
-    public void likeContact(Contact contact) {
-        mContactsDatabaseInterface.likeContact(contact);
-
+    public void likeContact(Contact contact, ContactsDisplayerListener contactsDisplayerListener) {
+        mContactsPersistence.likeContact(contact);
+        Contact newContact = mContactsPersistence.getContact(contact.getId());
+        contactsDisplayerListener.onNumberOfLikesChanged(newContact);
     }
 
     @Override
     public Iterable<Contact> getContacts() {
-        return mContactsDatabaseInterface.getContacts();
+        return mContactsPersistence.getContacts();
     }
 
     public int getContactLikes(Contact contact) {
-        return mContactsDatabaseInterface.getContactLikes(contact);
+        return mContactsPersistence.getContactLikes(contact);
     }
 }
